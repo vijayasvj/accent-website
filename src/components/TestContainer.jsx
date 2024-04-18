@@ -32,6 +32,7 @@ const TestContainer = () => {
       localStorage.setItem('currentTestNumber', currentTestNumber + 1);
     } else {
       localStorage.clear();
+      localStorage.setItem('finalScore', totalScore)
       return <Navigate to="/test-completion" />;
     }
   };
@@ -49,6 +50,7 @@ const TestContainer = () => {
       <TestCard
         key={currentTestData.id}
         item={currentTestData}
+        testNumber={currentTestNumber + 1}
         onTotalScoreChange={handleTotalScoreChange}
         onClickNext={changeCurrentTestData}
         isLastTest={isLastTest}

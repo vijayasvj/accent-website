@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import StartRecording from './StartRecording';
 
-const TestCard = ({ item, onTotalScoreChange, onClickNext, isLastTest }) => {
+const TestCard = ({ item, onTotalScoreChange, onClickNext, isLastTest, testNumber }) => {
     const [isAudioRecorded, setIsAudioRecorded] = useState(false);
     const [audioUrl, setAudioUrl] = useState(null)
     const [score, setScore] = useState(0)
@@ -18,7 +18,7 @@ const TestCard = ({ item, onTotalScoreChange, onClickNext, isLastTest }) => {
 
   return (
     <section className='w-full flex flex-col items-center space-y-4'>
-        <p className='w-full text-start'>Text - {item.id}: {item.text}</p>
+        <p className='w-full text-start'>Text - {testNumber}: {item.text}</p>
         {isAudioRecorded ? (
             <React.Fragment>
                 <audio
