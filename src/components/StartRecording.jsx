@@ -14,18 +14,45 @@ const StartRecording = ({ item, onRecordingStopped, onScoreChange }) => {
     setIsOpen(true)
   }
 
-  const onRecordingSubmit = (blob) => {
-    const url = URL.createObjectURL(blob)
+  // When the recording is stopped this function gets triggered
+  const onRecordingSubmit = async (blob) => {
+    const url = URL.createObjectURL(blob);
     const reader = new FileReader();
-    reader.onload = () => {
+    
+    reader.onload = async () => {
       const base64String = reader.result.split(',')[1];
-      console.log(base64String);
-      
-      onRecordingStopped(url);
-      onScoreChange(item.id);
-      closeDialog();
+      try {
+        const response = await sendAudioToServer(base64String, item.id);
+        console.log(response);
+        if(response.ok) {
+          onRecordingStopped(url);
+          onScoreChange(item.id);
+          closeDialog();
+        } else {
+          throw new Error("")
+        }
+      } catch (error) {
+        console.error('Error while sending data to server:', error);
+      }
     };
+    
     reader.readAsDataURL(blob);
+  };
+
+  const sendAudioToServer = async (base64String, id) => {
+    const response = await fetch('http://localhost:3001/compare_audios', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ audio: base64String, testId: id }),
+    });
+    
+    if (!response.ok) {
+      throw new Error('Failed to send data to server');
+    }
+    
+    return response.json();
   };
 
   const recorderControls = useAudioRecorder()
