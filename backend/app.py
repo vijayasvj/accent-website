@@ -21,20 +21,11 @@ def pad_array(arr, length):
 def compare_audios():
     # Get the audio arrays from the request
     data = request.json
-    audio1 = np.array(data['audio1'])
-    audio2 = np.array(data['audio2'])
-
-    # Get the maximum length of the two audio arrays
-    max_length = max(len(audio1), len(audio2))
-
-    # Pad the arrays if their lengths are different
-    audio1 = pad_array(audio1, max_length)
-    audio2 = pad_array(audio2, max_length)
-
-    # Calculate cosine similarity
-    similarity_score = 1 - cosine(audio1, audio2)
-
-    return jsonify({'similarity_score': similarity_score})
-
+    audio1 = data['audio1']
+    id = data['id']
+    enc=audio1.b64encode(open("file.wav").read())
+    random_number = random.randint(0, 10)  # Generating a random number between 0 and 10
+    return jsonify({'score':random_number})
+                    
 if __name__ == '__main__':
     app.run(debug=True)
