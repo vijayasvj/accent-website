@@ -23,14 +23,9 @@ const StartRecording = ({ item, onRecordingStopped, onScoreChange }) => {
       const base64String = reader.result.split(',')[1];
       try {
         const response = await sendAudioToServer(base64String, item.id);
-        console.log(response);
-        if(response.ok) {
-          onRecordingStopped(url);
-          onScoreChange(item.id);
-          closeDialog();
-        } else {
-          throw new Error("")
-        }
+        onRecordingStopped(url);
+        onScoreChange(response.score);
+        closeDialog();
       } catch (error) {
         console.error('Error while sending data to server:', error);
       }
