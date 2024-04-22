@@ -48,9 +48,6 @@ def compare_audios():
         reference_audio, _ = sf.read(reference_audio_path)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-    finally:
-        # Clean up temporary input audio file
-        os.remove("input_audio.wav")
 
     # Ensure both audio arrays are of the same length
     max_length = max(len(input_audio), len(reference_audio))
