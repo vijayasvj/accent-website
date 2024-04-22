@@ -35,7 +35,7 @@ const StartRecording = ({ item, onRecordingStopped, onScoreChange }) => {
   };
 
   const sendAudioToServer = async (base64String, id) => {
-    const response = await fetch('http://localhost:3001/compare_audios', {
+    const response = await fetch('http://localhost:3002/predict', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
