@@ -6,7 +6,7 @@ import Header from '../components/Header'
 const TestPage = () => {
   return (
     <React.Fragment>
-        <Header />
+        <Header title={"Accent Test"} description={"Read each  text / phrase in American accent and record your voice."} />
         <main className="w-full">
             <TestContainer />
         </main>

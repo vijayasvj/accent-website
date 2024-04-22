@@ -21,6 +21,7 @@ const TestCard = ({ item, onTotalScoreChange, onClickNext, isLastTest, testNumbe
         <p className='w-full text-start'>Text - {testNumber}: {item.text}</p>
         {isAudioRecorded ? (
             <React.Fragment>
+              <span>Recorded Audio:</span>
                 <audio
                     src={audioUrl}
                     controls
@@ -39,7 +40,7 @@ const TestCard = ({ item, onTotalScoreChange, onClickNext, isLastTest, testNumbe
             </React.Fragment>
         ) : (
             <StartRecording item={item} onRecordingStopped={changeAudioUrl} onScoreChange={onScoreChange} />
-        )}
+        )} 
     </section>
   )
 }

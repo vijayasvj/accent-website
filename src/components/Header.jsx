@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Header = () => {
+const Header = ({title, description}) => {
   return (
     <section className='flex flex-col items-center space-y-2'>
-        <span className='text-3xl font-semibold'>Accent Test</span>
-        <p className='text-md text-slate-500'>Read each  text / phrase in American accent and record your voice.</p>
+        <span className='text-3xl font-semibold'>{title}</span>
+        <p className='text-md text-slate-500'>{description}</p>
     </section>
   )
 }

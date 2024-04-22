@@ -1,39 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import { dummyTestData } from '../constants/dummyTestData';
-import TestCard from './TestCard';
+import PracticeTestCard from './PracticeTestCard';
 import { Navigate } from 'react-router-dom';
 
-const TestContainer = () => {
+const PracticeContainer = () => {
   const testData = dummyTestData;
 
   const [totalScore, setTotalScore] = useState(
-    parseInt(localStorage.getItem('testTotalScore')) || 0
+    parseInt(localStorage.getItem('practiceTestTotalScore')) || 0
   );
 
   const [currentTestNumber, setCurrentTestNumber] = useState(
-    parseInt(localStorage.getItem('currentTestNumber')) || 0
+    parseInt(localStorage.getItem('practiceCurrentTestNumber')) || 0
   );
 
   const [isLastTest, setIsLastTest] = useState(false);
 
   const [currentTestData, setCurrentTestData] = useState(() => {
-    const storedTestData = JSON.parse(localStorage.getItem('currentTestData'));
+    const storedTestData = JSON.parse(localStorage.getItem('practiceCurrentTestData'));
     return storedTestData || testData[currentTestNumber];
   });
 
   const handleTotalScoreChange = (score) => {
     setTotalScore((prevScore) => prevScore + score);
-    localStorage.setItem('testTotalScore', totalScore + score);
+    localStorage.setItem('practiceTestTotalScore', totalScore + score);
   };
 
   const changeCurrentTestData = () => {
     if (!isLastTest) {
       setCurrentTestNumber((prevNum) => prevNum + 1);
-      localStorage.setItem('currentTestNumber', currentTestNumber + 1);
+      localStorage.setItem('practiceCurrentTestNumber', currentTestNumber + 1);
     } else {
       localStorage.clear();
-      localStorage.setItem('testFinalScore', totalScore)
-      return <Navigate to="/test-completion" />;
+      localStorage.setItem('practiceTestFinalScore', totalScore)
+      return <Navigate to="/practice-test-completion" />;
     }
   };
 
@@ -42,12 +42,12 @@ const TestContainer = () => {
       setIsLastTest(true);
     }
     setCurrentTestData(testData[currentTestNumber]);
-    localStorage.setItem('currentTestData', JSON.stringify(testData[currentTestNumber]));
+    localStorage.setItem('practiceCurrentTestData', JSON.stringify(testData[currentTestNumber]));
   }, [currentTestNumber, testData]);
 
   return (
     <div className="flex flex-col items-center w-1/2 mx-auto space-y-8">
-      <TestCard
+      <PracticeTestCard
         key={currentTestData.id}
         item={currentTestData}
         testNumber={currentTestNumber + 1}
@@ -59,4 +59,4 @@ const TestContainer = () => {
   );
 };
 
-export default TestContainer;
+export default PracticeContainer;

@@ -37,6 +37,15 @@ const TestCompletedPage = () => {
           Re - attempt
         </button>
           </a>
+          <div className="flex flex-col items-center space-y-2 mt-8">
+  <p className="text-lg font-medium">If you want to practice again or try a demo, click here:</p>
+  <a href="/learn-accent">
+    <button className="bg-slate-950 text-slate-200 font-bold py-2 px-4 rounded-md">
+      Practice
+    </button>
+  </a>
+</div>
+
         </div>
       </div>
         </React.Fragment>
