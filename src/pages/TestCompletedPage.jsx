@@ -1,5 +1,6 @@
 import React from "react";
 import { Completion, Failed } from "../assets";
+import { Link } from "react-router-dom";
 
 const TestCompletedPage = () => {
     const totalScore = localStorage.getItem('finalScore');
@@ -32,18 +33,18 @@ const TestCompletedPage = () => {
             <span className="text-lg text-slate-400">Total Score:</span>
             <span className="text-2xl font-semibold">{totalScore}</span>
           </div>
-          <a href="/accent-test">
+          <Link to="/accent-test">
           <button className="bg-red-500 hover:bg-red-700 text-slate-200 font-bold py-2 px-4 rounded-md">
           Re - attempt
         </button>
-          </a>
+          </Link>
           <div className="flex flex-col items-center space-y-2 mt-8">
   <p className="text-lg font-medium">If you want to practice again or try a demo, click here:</p>
-  <a href="/learn-accent">
+  <Link to="/learn-accent">
     <button className="bg-slate-950 text-slate-200 font-bold py-2 px-4 rounded-md">
       Practice
     </button>
-  </a>
+  </Link>
 </div>
 
         </div>

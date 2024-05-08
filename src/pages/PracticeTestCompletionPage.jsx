@@ -1,5 +1,6 @@
 import React from "react";
 import { Completion } from "../assets";
+import { Link } from "react-router-dom";
 
 const PracticeTestCompletionPage = () => {
   return (
@@ -11,7 +12,7 @@ const PracticeTestCompletionPage = () => {
           <div className="flex flex-col items-center">
             <p className="text-md font-medium">You've completed your practice successfully!</p>
             <p className="text-md font-medium">Now, you're ready for the real test.</p>
-            <a href="/accent-test" className="w-fit mt-4 rounded-md bg-slate-900 text-slate-100 px-4 py-2 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">Take Real Test</a>
+            <Link to="/accent-test" className="w-fit mt-4 rounded-md bg-slate-900 text-slate-100 px-4 py-2 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">Take Real Test</Link>
           </div>
         </div>
       </React.Fragment>

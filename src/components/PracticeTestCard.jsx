@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import StartRecording from './StartRecording';
+import { Link } from 'react-router-dom';
 
 const PracticeTestCard = ({ item, onTotalScoreChange, onClickNext, isLastTest, testNumber }) => {
     const [isAudioRecorded, setIsAudioRecorded] = useState(false);
@@ -72,7 +73,7 @@ const PracticeTestCard = ({ item, onTotalScoreChange, onClickNext, isLastTest, t
                     ) : (
                         <React.Fragment>
                             {isLastTest ? (
-                                <a href="/practice-test-completion"><button onClick={onClickNext} className="rounded-md bg-slate-200 text-slate-950 px-4 py-2 text-sm font-medium hover:bg-slate-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 w-full">Submit Test</button></a>
+                                <Link to="/practice-test-completion"><button onClick={onClickNext} className="rounded-md bg-slate-200 text-slate-950 px-4 py-2 text-sm font-medium hover:bg-slate-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 w-full">Submit Test</button></Link>
                                 ) : (
                                 <button onClick={onClickNext} className="rounded-md bg-slate-200 text-slate-950 px-4 py-2 text-sm font-medium hover:bg-slate-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 w-fit">Next</button>
                                 )

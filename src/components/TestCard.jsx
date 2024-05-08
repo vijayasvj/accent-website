@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import StartRecording from './StartRecording';
+import { Link } from 'react-router-dom';
 
 const TestCard = ({ item, onTotalScoreChange, onClickNext, isLastTest, testNumber }) => {
     const [isAudioRecorded, setIsAudioRecorded] = useState(false);
@@ -31,7 +32,7 @@ const TestCard = ({ item, onTotalScoreChange, onClickNext, isLastTest, testNumbe
                 <div className='w-full flex space-between'>
                 <span className='w-full text-start pl-4'>Score: {score}</span>
                 {isLastTest ? (
-                  <a href="/test-completion"><button onClick={onClickNext} className="rounded-md bg-slate-200 text-slate-950 px-4 py-2 text-sm font-medium hover:bg-slate-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 w-fit">Submit Test</button></a>
+                  <Link to="/test-completion"><button onClick={onClickNext} className="rounded-md bg-slate-200 text-slate-950 px-4 py-2 text-sm font-medium hover:bg-slate-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 w-fit">Submit Test</button></Link>
                 ) : (
                   <button onClick={onClickNext} className="rounded-md bg-slate-200 text-slate-950 px-4 py-2 text-sm font-medium hover:bg-slate-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 w-fit">Next</button>
                   )
